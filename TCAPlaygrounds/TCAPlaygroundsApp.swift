@@ -12,6 +12,10 @@ struct TCAPlaygroundsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(
+                    \.googleMapAPIKey,
+                     Bundle.main.object(forInfoDictionaryKey: "GMSAPIKey") as! String
+                )
         }
     }
 }
