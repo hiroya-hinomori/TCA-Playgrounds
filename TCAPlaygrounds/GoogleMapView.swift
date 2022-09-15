@@ -7,21 +7,50 @@
 
 import GoogleMaps
 import SwiftUI
+import CoreLocation
 
 struct GoogleMapView: UIViewRepresentable {
     
     @Environment(\.googleMapAPIKey) var apiKey: String
-
+    @State var location: CLLocationCoordinate2D
+    @Binding var isRendering: Bool
+    
+    func makeCoordinator() -> Coodinator {
+        Coodinator(with: self)
+    }
+    
     func makeUIView(context: Context) -> GMSMapView {
         GMSServices.provideAPIKey(apiKey)
         GMSServices.setMetalRendererEnabled(true)
-        
-        return .init(
+        let mapView = GMSMapView(
             frame: .zero,
-            camera: .camera(withLatitude: 35.6869312, longitude: 139.7748535, zoom: 18.0)
+            camera: .init(target: location, zoom: 18.0)
         )
+        mapView.delegate = context.coordinator
+        return mapView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
+        uiView.animate(toLocation: .init(latitude: location.latitude, longitude: location.longitude))
+    }
+}
+
+extension GoogleMapView {
+    class Coodinator: NSObject, GMSMapViewDelegate {
+        var parent: GoogleMapView
+        
+        init(with mapView: GoogleMapView) {
+            parent = mapView
+        }
+
+        func mapViewSnapshotReady(_ mapView: GMSMapView) { }
+        
+        func mapViewDidStartTileRendering(_ mapView: GMSMapView) {
+            parent.isRendering = true
+        }
+        
+        func mapViewDidFinishTileRendering(_ mapView: GMSMapView) {
+            parent.isRendering = false
+        }
     }
 }

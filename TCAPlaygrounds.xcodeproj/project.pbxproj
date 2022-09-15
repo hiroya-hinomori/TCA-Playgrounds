@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4845735B8FCE74E91B667047 /* Pods_TCAPlaygrounds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6E67A5C7F3628DC96DB193 /* Pods_TCAPlaygrounds.framework */; };
+		6C356A2D28D178E0006481B0 /* ContentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C356A2C28D178E0006481B0 /* ContentStore.swift */; };
+		6C356A3028D17AC9006481B0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 6C356A2F28D17AC9006481B0 /* ComposableArchitecture */; };
 		6CA3ECF228D084290066DC40 /* GoogleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA3ECF128D084290066DC40 /* GoogleMapView.swift */; };
 		6CA3ECF428D0883B0066DC40 /* EnvironmentValues+GoogleMapAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA3ECF328D0883B0066DC40 /* EnvironmentValues+GoogleMapAPIKey.swift */; };
 		6CDB9FED28D04AB100B4248F /* TCAPlaygroundsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDB9FEC28D04AB100B4248F /* TCAPlaygroundsApp.swift */; };
@@ -30,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		435ABC1EEB8CB477549BE622 /* Pods_TCAPlaygroundsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TCAPlaygroundsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C356A2C28D178E0006481B0 /* ContentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStore.swift; sourceTree = "<group>"; };
 		6CA3ECF128D084290066DC40 /* GoogleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapView.swift; sourceTree = "<group>"; };
 		6CA3ECF328D0883B0066DC40 /* EnvironmentValues+GoogleMapAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+GoogleMapAPIKey.swift"; sourceTree = "<group>"; };
 		6CDB9FE928D04AB100B4248F /* TCAPlaygrounds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCAPlaygrounds.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C356A3028D17AC9006481B0 /* ComposableArchitecture in Frameworks */,
 				4845735B8FCE74E91B667047 /* Pods_TCAPlaygrounds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +106,7 @@
 			children = (
 				6CDB9FEC28D04AB100B4248F /* TCAPlaygroundsApp.swift */,
 				6CDB9FEE28D04AB100B4248F /* ContentView.swift */,
+				6C356A2C28D178E0006481B0 /* ContentStore.swift */,
 				6CA3ECF128D084290066DC40 /* GoogleMapView.swift */,
 				6CA3ECF328D0883B0066DC40 /* EnvironmentValues+GoogleMapAPIKey.swift */,
 				6CDB9FF028D04AB500B4248F /* Assets.xcassets */,
@@ -154,6 +159,9 @@
 			dependencies = (
 			);
 			name = TCAPlaygrounds;
+			packageProductDependencies = (
+				6C356A2F28D17AC9006481B0 /* ComposableArchitecture */,
+			);
 			productName = TCAPlaygrounds;
 			productReference = 6CDB9FE928D04AB100B4248F /* TCAPlaygrounds.app */;
 			productType = "com.apple.product-type.application";
@@ -205,6 +213,9 @@
 				Base,
 			);
 			mainGroup = 6CDB9FE028D04AB100B4248F;
+			packageReferences = (
+				6C356A2E28D17AC9006481B0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 6CDB9FEA28D04AB100B4248F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -327,6 +338,7 @@
 				6CA3ECF428D0883B0066DC40 /* EnvironmentValues+GoogleMapAPIKey.swift in Sources */,
 				6CA3ECF228D084290066DC40 /* GoogleMapView.swift in Sources */,
 				6CDB9FEF28D04AB100B4248F /* ContentView.swift in Sources */,
+				6C356A2D28D178E0006481B0 /* ContentStore.swift in Sources */,
 				6CDB9FED28D04AB100B4248F /* TCAPlaygroundsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +613,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6C356A2E28D17AC9006481B0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6C356A2F28D17AC9006481B0 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C356A2E28D17AC9006481B0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6CDB9FE128D04AB100B4248F /* Project object */;
 }

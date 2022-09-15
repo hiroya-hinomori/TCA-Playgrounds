@@ -11,11 +11,19 @@ import SwiftUI
 struct TCAPlaygroundsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(
-                    \.googleMapAPIKey,
-                     Bundle.main.object(forInfoDictionaryKey: "GMSAPIKey") as! String
+            ContentView(
+                store: .init(
+                    initialState: .init(
+                        location: .init(latitude: 35.6869312, longitude: 139.7748535)
+                    ),
+                    reducer: ContentStore.reducer.debug(),
+                    environment: .init()
                 )
+            )
+            .environment(
+                \.googleMapAPIKey,
+                 Bundle.main.object(forInfoDictionaryKey: "GMSAPIKey") as! String
+            )
         }
     }
 }
